@@ -1,0 +1,12 @@
+.banner {
+  position: absolute;
+  top: 55px;
+  left: auto;
+  z-index: -1;
+}
+.lander {
+  text-align: center;
+  font-weight: 800;
+  color: black;
+  text-shadow: 4px 4px 6px #ffffff;
+}

@@ -1,0 +1,15 @@
+.form {
+  position: absolute;
+  padding: 5px;
+  left: 40%;
+}
+
+.label {
+  padding: 5px;
+  margin: 7px;
+}
+
+.input {
+  padding: 5px;
+  margin: 7px;
+}
