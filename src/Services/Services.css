@@ -6,6 +6,7 @@
 }
 .lander {
   text-align: center;
+  top: 100px;
   font-weight: 800;
   color: black;
   text-shadow: 4px 4px 6px #ffffff;

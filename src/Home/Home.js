@@ -3,25 +3,40 @@ import { Button } from "react-bootstrap";
 import history from "../history";
 import "./Home.css";
 import pic from "./hair.jpg";
+import Scheduler from "../Scheduler/Scheduler";
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div className="Home">
-        <img className="banner" alt=" " src={pic} height={600} width={1440} />
-        <div className="lander">
-          <h1>Welcome to Beauty Salon</h1>
-          <p>"A WOMAN WHO CUTS HER IS ABOUT TO CHANGE HER LIFE" -Coco Chanel</p>
+const Home = (props) => {
+  const [newform, setNewForm] = React.useState(true);
+
+  const clickscheduler = () => {
+    //this.newform = !this.newform;
+    setNewForm(false);
+    console.log("hello");
+  };
+
+  return (
+    <div className="Home">
+      <img className="banner" alt=" " src={pic} height={600} width={1440} />
+      <div className="lander">
+        <h1>Welcome to Beauty Salon</h1>
+        <p>"A WOMAN WHO CUTS HER IS ABOUT TO CHANGE HER LIFE" -Coco Chanel</p>
+
+        {newform ? (
           <form>
             <Button
               variant="btn btn-success"
-              onClick={() => history.push("/Services")}
+              // onClick={() => history.push("/Service")}
+              onClick={clickscheduler}
             >
               BOOK NOW
             </Button>
           </form>
-        </div>
+        ) : (
+          <Scheduler />
+          // <h1>hello</h1>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+export default Home;

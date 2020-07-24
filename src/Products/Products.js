@@ -14,6 +14,7 @@ class Products extends Component {
   componentWillMount() {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
+      // .get("http://localhost:8080/hello")
       .then((response) => {
         console.log(response);
         this.setState({ signUpForm: response.data });

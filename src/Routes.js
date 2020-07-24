@@ -9,6 +9,7 @@ import history from "./history";
 import Services from "./Services/Services";
 import Login from "./Login/Login";
 import SignUp from "./SignUp/SignUp";
+import Scheduler from "./Scheduler/Scheduler";
 
 export default class Routes extends Component {
   render() {
@@ -22,6 +23,7 @@ export default class Routes extends Component {
           <Route path="/About" component={About} />
           <Route path="/Login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
+          <Route path="/Scheduler" component={Scheduler} />
         </Switch>
       </Router>
     );
