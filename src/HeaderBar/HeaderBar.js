@@ -26,7 +26,10 @@ const HeaderBar = (props) => {
   const [varLogin, setVarLogin] = React.useState(true);
 
   const loginclickHandler = () => {
-    setVarLogin(false);
+    if (this.state.varLogin)
+      setVarLogin(false);
+    else
+      setVarLogin(true);
   };
 
   return (
@@ -37,7 +40,6 @@ const HeaderBar = (props) => {
         justify="space-between"
         alignItems="baseline"
       >
-        <Grid item xs={2}>
           {/* <LoginContainer username={"Login/LogOut"} /> */}
           {/* {varLogin ? (
             <Button href="/Login" onClick={loginclickHandler}>
@@ -46,13 +48,45 @@ const HeaderBar = (props) => {
           ) : (
             <Button> LogOut</Button>
           )} */}
+
+
+          {/*
           <Button href="/Login" onClick={loginclickHandler}>
             {varLogin ? "Login" : "LogOut"}
           </Button>
+          
           <Button variant="contained" href="/SignUp">
             Sign Up
           </Button>
-        </Grid>
+          */}
+
+          {
+            varLogin ? 
+            (
+              <Grid item xs={2}>
+                <Button className={classes.title} href="/Products">
+                  Profile
+                </Button>
+                <Button href="/Signout">
+                  Sign out
+                </Button>
+              </Grid>
+            )
+            :
+            (
+              <Grid item xs={2}>
+                <Button href="/Login">
+                  Login
+                </Button>
+                <Button variant="contained" href="/SignUp">
+                  Sign Up
+                </Button>
+              </Grid>
+            )
+          }
+
+          
+        
         <Grid item xs={8}>
           <Button className={classes.title} href="/">
             Home
