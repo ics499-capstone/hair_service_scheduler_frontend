@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
-import history from "../history";
 import "./Home.css";
 import pic from "./hair.jpg";
 import Scheduler from "../Scheduler/Scheduler";
@@ -9,7 +8,6 @@ const Home = (props) => {
   const [newform, setNewForm] = React.useState(true);
 
   const clickscheduler = () => {
-    //this.newform = !this.newform;
     setNewForm(false);
     console.log("hello");
   };
@@ -23,17 +21,12 @@ const Home = (props) => {
 
         {newform ? (
           <form>
-            <Button
-              variant="btn btn-success"
-              // onClick={() => history.push("/Service")}
-              onClick={clickscheduler}
-            >
+            <Button variant="btn btn-success" onClick={clickscheduler}>
               BOOK NOW
             </Button>
           </form>
         ) : (
           <Scheduler />
-          // <h1>hello</h1>
         )}
       </div>
     </div>

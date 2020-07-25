@@ -7,11 +7,12 @@ class SignUp extends Component {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      passWord: "",
+      firstname: "",
+      lastname: "",
+      password: "",
       email: "",
-      passWordConfirm: "",
+      passwordConfirm: "",
+      username: "",
     };
   }
 
@@ -23,7 +24,7 @@ class SignUp extends Component {
     e.preventDefault();
     console.log(this.state);
     axios
-      .post("https://jsonplaceholder.typicode.com/posts", this.state)
+      .post("http://localhost:5000/auth/register", this.state)
       .then((response) => {
         console.log(response);
       })
@@ -34,11 +35,12 @@ class SignUp extends Component {
 
   render() {
     const {
-      firstName,
-      lastName,
-      passWord,
+      firstname,
+      lastname,
+      password,
       email,
-      passWordConfirm,
+      passwordConfirm,
+      username,
     } = this.state;
     return (
       <div>
@@ -48,12 +50,21 @@ class SignUp extends Component {
         </div>
 
         <form className="form" onSubmit={this.submitHandler}>
+          <label className="label">User Name</label>
+          <input
+            className="input"
+            type="text"
+            name="username"
+            value={username}
+            onChange={this.changeHandler}
+          />
+          <br />
           <label className="label">First Name</label>
           <input
             className="input"
             type="text"
-            name="firstName"
-            value={firstName}
+            name="firstname"
+            value={firstname}
             onChange={this.changeHandler}
           />
           <br />
@@ -61,8 +72,8 @@ class SignUp extends Component {
           <input
             className="input"
             type="text"
-            name="lastName"
-            value={lastName}
+            name="lastname"
+            value={lastname}
             onChange={this.changeHandler}
           />
           <br />
@@ -79,9 +90,9 @@ class SignUp extends Component {
           <label className="label">Password</label>
           <input
             className="input"
-            type="password"
-            name="passWord"
-            value={passWord}
+            type="text"
+            name="password"
+            value={password}
             onChange={this.changeHandler}
           />
           <br />
@@ -89,9 +100,9 @@ class SignUp extends Component {
           &nbsp;&nbsp;
           <input
             className="input"
-            type="passwordConfirm"
+            type="text"
             name="passwordConfirm"
-            value={passWordConfirm}
+            value={passwordConfirm}
             onChange={this.changeHandler}
           />
           <br />

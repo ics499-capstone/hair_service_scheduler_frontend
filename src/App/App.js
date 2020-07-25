@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import HairService_secheduler from ".././HairService_secheduler";
+import HairServiceSecheduler from ".././HairServiceSecheduler";
 import Router from ".././Routes";
 
 function App() {
   return (
     <div className="App">
-      <HairService_secheduler />
+      <HairServiceSecheduler />
       <Router />
     </div>
   );

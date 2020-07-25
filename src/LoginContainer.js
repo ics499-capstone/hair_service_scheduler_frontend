@@ -11,17 +11,25 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginContainer = (props) => {
   const classes = useStyles();
-  const [varLogin, setVarLogin] = React.useState(false);
+  const [varLogin, setVarLogin] = React.useState(true);
+
+  const loginclickHandler = () => {
+    setVarLogin(false);
+  };
 
   return (
     <div>
-      {/* <login {...props} /> */}
-      <Button color="secondary" onClick={props.loginclickHandler} href="/Login">
-        Login
-      </Button>
+      {/* {varLogin ? (
+        <Button color="secondary" onClick={loginclickHandler} href="/Login">
+          Login
+        </Button>
+      ) : (
+        <Button> LogOut</Button>
+      )}
+
       <Button variant="contained" color="secondary" href="/SignUp">
         Sign Up
-      </Button>
+      </Button> */}
     </div>
   );
 };

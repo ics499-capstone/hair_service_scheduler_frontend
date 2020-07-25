@@ -5,26 +5,29 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import "./HeaderBar.css";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: "#fed8b1",
+    zIndex: theme.zIndex.drawer + 1,
+    padding: "10px 0px 0px 10px",
+  },
+  home: {
+    fontSize: 17,
+    color: "Black",
+  },
+  title: {
+    textAlign: "center",
+  },
+}));
+
 const HeaderBar = (props) => {
-  console.log(props);
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor:
-        // "rgba(255,0,0,0.5)",
-        "#fed8b1",
-      zIndex: theme.zIndex.drawer + 1,
-      padding: "10px 0px 0px 10px",
-    },
-    home: {
-      fontSize: 17,
-      color: "Black",
-    },
-    title: {
-      textAlign: "center",
-    },
-  }));
   const classes = useStyles();
+  const [varLogin, setVarLogin] = React.useState(true);
+
+  const loginclickHandler = () => {
+    setVarLogin(false);
+  };
 
   return (
     <AppBar position="fixed" className={classes.root}>
@@ -36,7 +39,16 @@ const HeaderBar = (props) => {
       >
         <Grid item xs={2}>
           {/* <LoginContainer username={"Login/LogOut"} /> */}
-          <Button href="/Login">Login</Button>
+          {/* {varLogin ? (
+            <Button href="/Login" onClick={loginclickHandler}>
+              Login
+            </Button>
+          ) : (
+            <Button> LogOut</Button>
+          )} */}
+          <Button href="/Login" onClick={loginclickHandler}>
+            {varLogin ? "Login" : "LogOut"}
+          </Button>
           <Button variant="contained" href="/SignUp">
             Sign Up
           </Button>

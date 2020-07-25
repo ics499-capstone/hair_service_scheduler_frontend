@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import history from "../history";
+import { Redirect } from "react-router";
 
 import "./Login.css";
 
@@ -8,15 +10,19 @@ class Login extends Component {
     super();
 
     this.state = {
-      email: "",
-      passWord: "",
+      username: "",
+      password: "",
+      loggedIn: false,
     };
 
-    // this.login = this.login.bind(this);
-    // this.onChange = this.onChange.bind(this);
+    // this.loginHandler = this.loginHandler.bind(this);
+    // this.changeHandler = this.changeHandler.bind(this);
   }
+  Login = () => {
+    this.props.useHistory.push("/");
+  };
 
-  //login() {
+  // login() {
   //   if (this.state.email && this.state.passWord) {
   //     PostData("login", this.state).then((result) => {
   //       let responseJson = result;
@@ -30,7 +36,7 @@ class Login extends Component {
   //     let responseJson = result;
   //     console.log(responseJson);
   //   });
-  //}
+  // }
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -40,9 +46,16 @@ class Login extends Component {
     e.preventDefault();
     console.log(this.state);
     axios
-      .post("https://jsonplaceholder.typicode.com/posts", this.state)
+      .post("http://localhost:5000/auth/login", this.state)
       .then((response) => {
         console.log(response);
+        window.location = "/";
+
+        // let responseJson = response;
+        // if (responseJson.userData) {
+        //   sessionStorage.setItem("userData", JSON.stringify(responseJson));
+        //   this.setState({ redirectToReferrer: true });
+        // }
       })
       .catch((error) => {
         console.log(error);
@@ -50,7 +63,7 @@ class Login extends Component {
   };
 
   render() {
-    const { email, passWord } = this.state;
+    const { username, password } = this.state;
     // if (this.state.redirectToReferrer) {
     //   return <Redirect to={"/home"} />;
     // }
@@ -66,22 +79,22 @@ class Login extends Component {
           <br />
         </div>
         <form className="form" onSubmit={this.loginHandler}>
-          <label className="label">Email</label>
+          <label className="label">Username</label>
           <input
             className="input"
             type="text"
-            name="email"
-            value={email}
-            placeholder="email"
+            name="username"
+            value={username}
+            placeholder="username"
             onChange={this.changeHandler}
           />{" "}
           <br />
           <label className="label">Password</label>
           <input
             className="input"
-            type="password"
+            type="text"
             name="password"
-            value={passWord}
+            value={password}
             placeholder="Password"
             onChange={this.changeHandler}
           />
